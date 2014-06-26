@@ -1,46 +1,46 @@
-Ò»£º git ±¾µØclone Ò»¸ö²Ö¿â
+ï»¿ä¸€ï¼š git æœ¬åœ°clone ä¸€ä¸ªä»“åº“
 
-    1. Ö±½ÓcloneÒ»¸ö²Ö¿â£º
+    1. ç›´æ¥cloneä¸€ä¸ªä»“åº“ï¼š
         $: git clone https://github.com/lmh2072005/gitStudy.git
-    2. ÁíÍâÒ»ÖÖclone·½Ê½£º
+    2. å¦å¤–ä¸€ç§cloneæ–¹å¼ï¼š
 
-        # ´´½¨Ä¿Â¼³õÊ¼»¯±¾µØ²Ö¿â
+        # åˆ›å»ºç›®å½•åˆå§‹åŒ–æœ¬åœ°ä»“åº“
         $: mkdir gitStudy && cd gitStudy
         $: git init
 
-        Èç¹û²»ÊÇÈ«¾ÖµÄÓÃ»§£¬ÅäÖÃ±¾µØ²Ö¿âÓÃ»§ĞÅÏ¢
+        å¦‚æœä¸æ˜¯å…¨å±€çš„ç”¨æˆ·ï¼Œé…ç½®æœ¬åœ°ä»“åº“ç”¨æˆ·ä¿¡æ¯
         git config usr.name xxx
         git config user.email xxx
 
-        # Ìí¼ÓÔ¶³Ì²Ö¿âÂ·¾¶(gitÀï£¬·şÎñÆ÷ÉÏµÄ²Ö¿âÔÚ±¾µØ³ÆÖ®Îªremote)
+        # æ·»åŠ è¿œç¨‹ä»“åº“è·¯å¾„(gité‡Œï¼ŒæœåŠ¡å™¨ä¸Šçš„ä»“åº“åœ¨æœ¬åœ°ç§°ä¹‹ä¸ºremote)
         $: git remote add github https://github.com/lmh2072005/gitStudy.git
-        ´ÓÔ¶³Ìpull£¨fetch + merge£©
+        ä»è¿œç¨‹pullï¼ˆfetch + mergeï¼‰
         $: git pull github [branch name]
 
-        °Ñ¹¤×÷Ä¿Â¼Ç¨ÒÆµ½githubÉÏÃæ£º
+        æŠŠå·¥ä½œç›®å½•è¿ç§»åˆ°githubä¸Šé¢ï¼š
         $: git push github --all
 
-        git remote ²ÎÊıÃ÷Ï¸
-        git remote add name url ÔÚurl´´½¨Ãû×ÖÎªnameµÄÓ³Éä£¨Adds a remote named <name> for the repository at <url>£©
-        git remote show name ¸ø³öremote nameµÄĞÅÏ¢¡£
-        git remote -v | --verbose ÁĞ³öremoteÏêÏ¸ĞÅÏ¢
-        git remote ²»´ø²ÎÊı£¬ÁĞ³öÒÑ¾­´æÔÚµÄÔ¶³Ì·ÖÖ§£¬ÀıÈç£º
+        git remote å‚æ•°æ˜ç»†
+        git remote add name url åœ¨urlåˆ›å»ºåå­—ä¸ºnameçš„æ˜ å°„ï¼ˆAdds a remote named <name> for the repository at <url>ï¼‰
+        git remote show name ç»™å‡ºremote nameçš„ä¿¡æ¯ã€‚
+        git remote -v | --verbose åˆ—å‡ºremoteè¯¦ç»†ä¿¡æ¯
+        git remote ä¸å¸¦å‚æ•°ï¼Œåˆ—å‡ºå·²ç»å­˜åœ¨çš„è¿œç¨‹åˆ†æ”¯ï¼Œä¾‹å¦‚ï¼š
         #git remote
          github
 
- ¶ş£ºgit branch
+ äºŒï¼šgit branch
 
 
-    git branch ²»´ø²ÎÊı ÁĞ³ö±¾µØÒÑ¾­´æÔÚµÄ·ÖÖ§
-    git branch -r ÁĞ³öÔ¶³Ì·ÖÖ§
-    git branch -a ÁĞ³ö±¾µØ·ÖÖ§ºÍÔ¶³Ì·ÖÖ§
-    git branch xxx ´´½¨Ò»¸öĞÂµÄ±¾µØ·ÖÖ§xxx
-    git branch -m | -M oldbranch newbranch ÖØÃüÃû·ÖÖ§£¬Èç¹ûnewbranchÃû×Ö·ÖÖ§ÒÑ¾­´æÔÚ£¬ÔòĞèÒªÊ¹ÓÃ-MÇ¿ÖÆÖØÃüÃû£¬·ñÔò£¬Ê¹ÓÃ-m½øĞĞÖØÃüÃû¡£
-    git branch -d | -D branchname É¾³ıbranchname·ÖÖ§
-    git branch -d -r branchname É¾³ıÔ¶³Ìbranchname·ÖÖ§
+    git branch ä¸å¸¦å‚æ•° åˆ—å‡ºæœ¬åœ°å·²ç»å­˜åœ¨çš„åˆ†æ”¯
+    git branch -r åˆ—å‡ºè¿œç¨‹åˆ†æ”¯
+    git branch -a åˆ—å‡ºæœ¬åœ°åˆ†æ”¯å’Œè¿œç¨‹åˆ†æ”¯
+    git branch xxx åˆ›å»ºä¸€ä¸ªæ–°çš„æœ¬åœ°åˆ†æ”¯xxx
+    git branch -m | -M oldbranch newbranch é‡å‘½ååˆ†æ”¯ï¼Œå¦‚æœnewbranchåå­—åˆ†æ”¯å·²ç»å­˜åœ¨ï¼Œåˆ™éœ€è¦ä½¿ç”¨-Må¼ºåˆ¶é‡å‘½åï¼Œå¦åˆ™ï¼Œä½¿ç”¨-mè¿›è¡Œé‡å‘½åã€‚
+    git branch -d | -D branchname åˆ é™¤branchnameåˆ†æ”¯
+    git branch -d -r branchname åˆ é™¤è¿œç¨‹branchnameåˆ†æ”¯
 
-Èı£ºgit stash
+ä¸‰ï¼šgit stash
 
-   git stash ½«µ±Ç°·ÖÖ§µÄËùÓĞ¸Ä¶¯¼ôÇĞ±£´æÆğÀ´
+   git stash å°†å½“å‰åˆ†æ”¯çš„æ‰€æœ‰æ”¹åŠ¨å‰ªåˆ‡ä¿å­˜èµ·æ¥
 
-   git stash apply ½«±£´æÆğÀ´µÄËùÓĞµÄ¸Ä¶¯Ó¦ÓÃµ½µ±Ç°·ÖÖ§
+   git stash apply å°†ä¿å­˜èµ·æ¥çš„æ‰€æœ‰çš„æ”¹åŠ¨åº”ç”¨åˆ°å½“å‰åˆ†æ”¯
