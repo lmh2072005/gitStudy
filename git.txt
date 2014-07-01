@@ -86,3 +86,24 @@ git checkout -b branch  创建分支并切换到该分支
 十一：git merge
 git merge命令用于合并指定分支到当前分支
 比如当前所在分支为master, git merge dev 表示合并dev到当前master分支
+
+===============
+如何在分支上移动head    
+用带参数的git log也可以看到分支的合并情况，生成类似分支树形图
+$ git log --graph --pretty=oneline --abbrev-commit
+
+合并分支时，如果可能，Git会用“Fast forward”模式，但这种模式下，删除分支后，会丢掉分支信息
+如果要强制禁用“Fast forward”模式，Git就会在merge时生成一个新的commit
+git merge --no-ff -m "merge with no-ff" dev
+将dev 合并到当前分支 ，--no-ff参数，表示禁用“Fast forward”
+
+it stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除
+另一种方式是用git stash pop，恢复的同时把stash内容也删了
+只要local有改动，没有提交，都不能切换branch
+
+要查看远程库的信息，用git remote：
+用git remote -v显示更详细的信息：
+推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：
+git push origin master  将本地master推送到远程origin
+
+果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name
