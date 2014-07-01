@@ -40,6 +40,8 @@
     git branch -d | -D branchname 删除branchname分支
     git branch -d -r branchname 删除远程branchname分支
 
+    创建并切换到当前分支：git checkout -b branchname
+
 三：git stash
 
    git stash 将当前分支的所有改动剪切保存起来
@@ -70,8 +72,17 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
 第二步是用“git commit”提交更改，实际上就是把暂存区的所有内容提交到当前分支.
 
 八：git checkout
-git checkout branck 切换分支
+git checkout branch 切换分支
 git checkout -- file可以丢弃工作区的修改
-
+git checkout -b branch  创建分支并切换到该分支
 九：git reset 
-用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区：
+用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区.
+再用git checkout --file 撤销工作区的修改
+如果已经提交到了版本库就只能回退历史版本了git reset --hard HEAD^
+
+十：git rm
+删除文件 git rm file  ,没提交到暂存区从工作区恢
+
+十一：git merge
+git merge命令用于合并指定分支到当前分支
+比如当前所在分支为master, git merge dev 表示合并dev到当前master分支
