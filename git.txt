@@ -1,0 +1,74 @@
+﻿一： git 本地clone 一个仓库
+
+
+    1. 直接clone一个仓库：
+        $: git clone https://github.com/lmh2072005/gitStudy.git
+    2. 另外一种clone方式：
+
+        # 创建目录初始化本地仓库
+        $: mkdir gitStudy && cd gitStudy
+        $: git init
+
+        如果不是全局的用户，配置本地仓库用户信息
+        git config usr.name xxx
+        git config user.email xxx
+
+        # 添加远程仓库路径(git里，服务器上的仓库在本地称之为remote)
+        $: git remote add github https://github.com/lmh2072005/gitStudy.git
+        从远程pull（fetch + merge）
+        $: git pull github [branch name]
+
+        把工作目录迁移到github上面：
+        $: git push github --all
+
+        git remote 参数明细
+        git remote add name url 在url创建名字为name的映射（Adds a remote named <name> for the repository at <url>）
+        git remote show name 给出remote name的信息。
+        git remote -v | --verbose 列出remote详细信息
+        git remote 不带参数，列出已经存在的远程分支，例如：
+        #git remote
+         github
+
+ 二：git branch
+
+
+    git branch 不带参数 列出本地已经存在的分支
+    git branch -r 列出远程分支
+    git branch -a 列出本地分支和远程分支
+    git branch xxx 创建一个新的本地分支xxx
+    git branch -m | -M oldbranch newbranch 重命名分支，如果newbranch名字分支已经存在，则需要使用-M强制重命名，否则，使用-m进行重命名。
+    git branch -d | -D branchname 删除branchname分支
+    git branch -d -r branchname 删除远程branchname分支
+
+三：git stash
+
+   git stash 将当前分支的所有改动剪切保存起来
+
+   git stash apply 将保存起来的所有的改动应用到当前分支
+
+四：git diff
+查看具体修改了什么内容 ，工作区和版本控制区的比较
+git diff HEAD --filename”命令可以查看工作区和版本库里面最新版本的区别
+五：git log
+git log  查看提交的历史记录
+
+git log --pretty=oneline   查看简单的历史记录
+六：git reset
+回退到历史版本
+git reset --hard HEAD^
+用HEAD表示当前版本
+上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+git reset --hard fe8e15651  回退到具体提交的记录
+Git提供了一个命令git reflog用来记录你的每一次命令
+
+七：工作区（Working Directory）版本库（Repository）
+工作区就是你在电脑里能看到的目录
+工作区有一个隐藏目录“.git”，这个不算工作区，而是Git的版本库。
+Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
+我们把文件往Git版本库里添加的时候，是分两步执行的：
+第一步是用“git add”把文件添加进去，实际上就是把文件修改添加到暂存区；
+第二步是用“git commit”提交更改，实际上就是把暂存区的所有内容提交到当前分支.
+
+八：git checkout
+git checkout branck 切换分支
+git checkout -- file可以丢弃工作区的修改
