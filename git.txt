@@ -72,3 +72,6 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
 八：git checkout
 git checkout branck 切换分支
 git checkout -- file可以丢弃工作区的修改
+
+九：git reset 
+用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区：
