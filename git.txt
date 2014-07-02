@@ -121,3 +121,28 @@ eg: git tag v0.1 23fsdfa
 git show tagname查看标签信息
 还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字：
 git tag -a v0.1 -m "version 0.1 released" 3628164
+
+git tag -d tagName  删除tag
+创建的标签都只存储在本地，不会自动推送到远程,如果要推送某个标签到远程，使用命令git push origin tagname
+一次性推送全部尚未推送到远程的本地标签: git push origin --tags
+
+如果标签已经推送到远程，要删除远程标签,先从本地删除
+git tag -d v0.9
+然后，从远程删除,删除命令也是push:   git push origin :refs/tags/v0.9
+
+在Git工作区的根目录下创建一个特殊的.gitignore文件然后把要忽略的文件名填进去，Git就会自动忽略这些文件
+在文本编辑器里“保存”或者“另存为”就可以把文件保存为.gitignore了
+比如内容：
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+配置别名
+告诉Git，以后st就表示status
+git config --global alias.st status
+现在敲git st 就相当于git status
+eg:git config --global alias.unstage 'reset HEAD'
+
+
+
