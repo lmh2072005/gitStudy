@@ -106,4 +106,18 @@ it stash apply恢复，但是恢复后，stash内容并不删除，你需要用g
 推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：
 git push origin master  将本地master推送到远程origin
 
-果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name
+果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name  
+
+
+如何在分支上移动HEAD  ？
+
+git tag
+标签是版本库的一个快照 ,是指向某个commit的指针,一个别名
+git tag name用于新建一个标签，默认为HEAD，也可以指定一个commit id 
+git tag查看所有标签
+git tag name commitid 
+为过去的提交打标签
+eg: git tag v0.1 23fsdfa
+git show tagname查看标签信息
+还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字：
+git tag -a v0.1 -m "version 0.1 released" 3628164
