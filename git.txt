@@ -21,7 +21,7 @@
         把工作目录迁移到github上面：
         $: git push github --all
 
-        git remote 参数明细
+        git remote 参数明细,查看远程库的信息
         git remote add name url 在url创建名字为name的映射（Adds a remote named <name> for the repository at <url>）
         git remote show name 给出remote name的信息。
         git remote -v | --verbose 列出remote详细信息
@@ -41,12 +41,17 @@
     git branch -d -r branchname 删除远程branchname分支
 
     创建并切换到当前分支：git checkout -b branchname
+  
+    只要local有改动，没有提交，都不能切换branch
 
 三：git stash
 
    git stash 将当前分支的所有改动剪切保存起来
 
    git stash apply 将保存起来的所有的改动应用到当前分支
+ 
+   git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除
+   另一种方式是用git stash pop，恢复的同时把stash内容也删了
 
 四：git diff
 查看具体修改了什么内容 ，工作区和版本控制区的比较
@@ -55,6 +60,10 @@ git diff HEAD --filename”命令可以查看工作区和版本库里面最新�
 git log  查看提交的历史记录
 
 git log --pretty=oneline   查看简单的历史记录
+
+用带参数的git log也可以看到分支的合并情况，生成类似分支树形图
+$ git log --graph --pretty=oneline --abbrev-commit
+
 六：git reset
 回退到历史版本
 git reset --hard HEAD^
@@ -87,22 +96,14 @@ git checkout -b branch  创建分支并切换到该分支
 git merge命令用于合并指定分支到当前分支
 比如当前所在分支为master, git merge dev 表示合并dev到当前master分支
 
-===============
-如何在分支上移动head    
-用带参数的git log也可以看到分支的合并情况，生成类似分支树形图
-$ git log --graph --pretty=oneline --abbrev-commit
-
 合并分支时，如果可能，Git会用“Fast forward”模式，但这种模式下，删除分支后，会丢掉分支信息
 如果要强制禁用“Fast forward”模式，Git就会在merge时生成一个新的commit
 git merge --no-ff -m "merge with no-ff" dev
 将dev 合并到当前分支 ，--no-ff参数，表示禁用“Fast forward”
 
-it stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除
-另一种方式是用git stash pop，恢复的同时把stash内容也删了
-只要local有改动，没有提交，都不能切换branch
+=============== 
 
-要查看远程库的信息，用git remote：
-用git remote -v显示更详细的信息：
+
 推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：
 git push origin master  将本地master推送到远程origin
 
