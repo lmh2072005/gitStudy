@@ -74,6 +74,8 @@ git reset --hard HEAD^
 上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
 git reset --hard fe8e15651  回退到具体提交的记录
 
+git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区
+
 七：工作区（Working Directory）版本库（Repository）
 工作区就是你在电脑里能看到的目录
 工作区有一个隐藏目录“.git”，这个不算工作区，而是Git的版本库。
@@ -84,7 +86,7 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
 
 八：git checkout
 git checkout branch 切换分支
-git checkout -- file可以丢弃工作区的修改
+git checkout -- file可以丢弃工作区的修改  eg:git checkout -- a.txt
 git checkout -b branch  创建分支并切换到该分支
 九：git reset 
 用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区.
