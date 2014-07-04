@@ -52,6 +52,7 @@
  
    git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除
    另一种方式是用git stash pop，恢复的同时把stash内容也删了
+   git stash list  查看所有的stash
 
 四：git diff
 查看具体修改了什么内容 ，工作区和版本控制区的比较
@@ -64,13 +65,14 @@ git log --pretty=oneline   查看简单的历史记录
 用带参数的git log也可以看到分支的合并情况，生成类似分支树形图
 $ git log --graph --pretty=oneline --abbrev-commit
 
+Git提供了一个命令git reflog用来记录你的每一次命令
+
 六：git reset
 回退到历史版本
 git reset --hard HEAD^
 用HEAD表示当前版本
 上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
 git reset --hard fe8e15651  回退到具体提交的记录
-Git提供了一个命令git reflog用来记录你的每一次命令
 
 七：工作区（Working Directory）版本库（Repository）
 工作区就是你在电脑里能看到的目录
