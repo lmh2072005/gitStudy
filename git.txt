@@ -156,7 +156,30 @@ eg:git config --global alias.unstage 'reset HEAD'
 =============== 
 
 如何在分支上移动HEAD  ？
+1. git branch
+git branch --merged 查看哪些分支已被并入当前分支
+git branch --no-merged 查看尚未合并的工作
+git branch -v 查看各个分支最后一个提交对象的信息
 
+2. remote
+git checkout -b [分支名] [远程名]/[分支名] 
+ eg:  git checkout -b serverfix origin/serverfix   
+切换到新建的 serverfix 本地分支，其内容同远程分支 origin/serverfix 一致
+
+git push [远程名] :[分支名]  删除远程分支
+git push origin :serverfix 在服务器上删除 serverfix 分支
+
+2. git rebase
+gir rebase  衍合
+比如将a分支合并到master ,采用merge : 
+git checkout master 、 git merge a  
+如果master分支还有新的提交 ，则a分支的提交会和master的提交合并为一个新的提交记录 
+采用rebase ：
+git checkout a、 git rebase master
+会将a分支的更改生成一个对应的快照放在master后面，看起来所有修改都是在一根线上先后进行的尽管实际上它们原本是同时并行发生的
+两种合并结果一样 ，只是历史记录不一样
+
+git diff --check，会把可能的多余白字符修正列出来
 
 
 
