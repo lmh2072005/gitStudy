@@ -181,6 +181,41 @@ git checkout a、 git rebase master
 
 git diff --check，会把可能的多余白字符修正列出来
 
+取消储藏 在某些情况下，你可能想应用储藏的修改，在进行了一些其他的修改后，又要取消之前所应用储藏的修改
+git stash show -p stash@{0} | git apply -R
+如果你沒有指定具体的某个储藏，Git 会选择最近的储藏
+git stash show -p | git apply -R
+新建一个別名，在你的 Git 里增加一个 stash-unapply 命令，这样更有效率
+git config --global alias.stash-unapply '!git stash show -p | git apply -R'
+
+git filter-branch
+如果你想用脚本的方式修改大量的提交，还有一个重写历史的选项可以用
+要从整个历史中删除一个名叫password.txt的文件
+git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
+
+git blame
+文件标注
+如果你发现自己代码中的一个方法存在缺陷，你可以用git blame来标注文件，查看那个方法的每一行分别是由谁在哪一天修改的。
+下面这个例子使用了-L选项来限制输出范围在第12至22行：
+git blame -L 12,22 simplegit.rb
+git blame后加上-C，Git会分析你在标注的文件然后尝试找出其中代码片段的原始出处,比如从其它文件剪切过来的
+git blame -C -L 12,22 simplegit.rb
+
+git config commit.template 当运行git commit时， Git 会在你的编辑器中显示设置的内容
+eg : git config --global commit.template $HOME/.gitmessage.txt
+
+git config core.autocrlf  配置处理在windows操作系统和其它操作系统结束符问题
+
+Git属性 .gitattributes
+比如二进制文件版本管理在比较时无法区分 ，可以在.gitattributes文件中设置相关属性
+.gitattributes文件通常是你项目的根目录
+对Word文档进行版本控制,word文档为二进制文档不能直接比较两个不同版本的Word文件
+Git 属性能很好地解决此问题，把下面的行加到.gitattributes文件：
+*.doc diff=word
+其实就是 Git 使用strings 程序，把Word文档转换成可读的文本文件
+再配置个git config diff.word.textconv catdoc
+现在如果在两个快照之间比较以.doc结尾的文件，Git 对这些文件运用"word"过滤器，在比较前把Word文件转换成文本文件
+比较图片在.gitattributes文件加：*.png diff=exif，配置git config diff.exif.textconv exiftool  （如果你下载并安装了exiftool程序）
 
 
 
