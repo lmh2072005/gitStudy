@@ -44,6 +44,10 @@
   
     只要local有改动，没有提交，都不能切换branch
 
+   git branch --merged 查看哪些分支已被并入当前分支
+   git branch --no-merged 查看尚未合并的工作
+   git branch -v 查看各个分支最后一个提交对象的信息
+ 
 三：git stash
 
    git stash 将当前分支的所有改动剪切保存起来
@@ -54,9 +58,19 @@
    另一种方式是用git stash pop，恢复的同时把stash内容也删了
    git stash list  查看所有的stash
 
+  取消储藏 在某些情况下，你可能想应用储藏的修改，在进行了一些其他的修改后，又要取消之前所应用储藏的修改
+  git stash show -p stash@{0} | git apply -R
+  如果你沒有指定具体的某个储藏，Git 会选择最近的储藏
+  git stash show -p | git apply -R
+  新建一个別名，在你的 Git 里增加一个 stash-unapply 命令，这样更有效率
+  git config --global alias.stash-unapply '!git stash show -p | git apply -R'
+
 四：git diff
 查看具体修改了什么内容 ，工作区和版本控制区的比较
 git diff HEAD --filename”命令可以查看工作区和版本库里面最新版本的区别
+git diff --check，会把可能的多余白字符修正列出来
+
+
 五：git log
 git log  查看提交的历史记录
 
@@ -135,6 +149,24 @@ git tag -d tagName  删除tag
 git tag -d v0.9
 然后，从远程删除,删除命令也是push:   git push origin :refs/tags/v0.9
 
+十五：git remote
+git checkout -b [分支名] [远程名]/[分支名] 
+eg:  git checkout -b serverfix origin/serverfix   
+切换到新建的 serverfix 本地分支，其内容同远程分支 origin/serverfix 一致
+
+git push [远程名] :[分支名]  删除远程分支
+git push origin :serverfix 在服务器上删除 serverfix 分支
+
+十六：gir rebase  
+git rebase衍合
+比如将a分支合并到master ,采用merge : 
+git checkout master 、 git merge a  
+如果master分支还有新的提交 ，则a分支的提交会和master的提交合并为一个新的提交记录 
+采用rebase ：
+git checkout a、 git rebase master
+会将a分支的更改生成一个对应的快照放在master后面，看起来所有修改都是在一根线上先后进行的尽管实际上它们原本是同时并行发生的
+两种合并结果一样 ，只是历史记录不一样
+
 十五：配置
 
 在Git工作区的根目录下创建一个特殊的.gitignore文件然后把要忽略的文件名填进去，Git就会自动忽略这些文件
@@ -163,7 +195,7 @@ git branch -v 查看各个分支最后一个提交对象的信息
 
 2. remote
 git checkout -b [分支名] [远程名]/[分支名] 
- eg:  git checkout -b serverfix origin/serverfix   
+eg:  git checkout -b serverfix origin/serverfix   
 切换到新建的 serverfix 本地分支，其内容同远程分支 origin/serverfix 一致
 
 git push [远程名] :[分支名]  删除远程分支
