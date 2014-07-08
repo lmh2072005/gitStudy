@@ -217,7 +217,9 @@ Git 属性能很好地解决此问题，把下面的行加到.gitattributes文�
 现在如果在两个快照之间比较以.doc结尾的文件，Git 对这些文件运用"word"过滤器，在比较前把Word文件转换成文本文件
 比较图片在.gitattributes文件加：*.png diff=exif，配置git config diff.exif.textconv exiftool  （如果你下载并安装了exiftool程序）
 
+Git 是一套内容寻址文件系统,Git 从核心上来看不过是简单地存储键值对
 
+git count-objects -v 以查看使用了多少空间
 
 
 
