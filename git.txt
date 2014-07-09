@@ -167,6 +167,11 @@ git checkout a、 git rebase master
 会将a分支的更改生成一个对应的快照放在master后面，看起来所有修改都是在一根线上先后进行的尽管实际上它们原本是同时并行发生的
 两种合并结果一样 ，只是历史记录不一样
 
+十七：git filter-branch
+如果你想用脚本的方式修改大量的提交，还有一个重写历史的选项可以用
+要从整个历史中删除一个名叫password.txt的文件
+git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
+
 十五：配置
 
 在Git工作区的根目录下创建一个特殊的.gitignore文件然后把要忽略的文件名填进去，Git就会自动忽略这些文件
@@ -188,42 +193,8 @@ eg:git config --global alias.unstage 'reset HEAD'
 =============== 
 
 如何在分支上移动HEAD  ？
-1. git branch
-git branch --merged 查看哪些分支已被并入当前分支
-git branch --no-merged 查看尚未合并的工作
-git branch -v 查看各个分支最后一个提交对象的信息
 
-2. remote
-git checkout -b [分支名] [远程名]/[分支名] 
-eg:  git checkout -b serverfix origin/serverfix   
-切换到新建的 serverfix 本地分支，其内容同远程分支 origin/serverfix 一致
 
-git push [远程名] :[分支名]  删除远程分支
-git push origin :serverfix 在服务器上删除 serverfix 分支
-
-2. git rebase
-gir rebase  衍合
-比如将a分支合并到master ,采用merge : 
-git checkout master 、 git merge a  
-如果master分支还有新的提交 ，则a分支的提交会和master的提交合并为一个新的提交记录 
-采用rebase ：
-git checkout a、 git rebase master
-会将a分支的更改生成一个对应的快照放在master后面，看起来所有修改都是在一根线上先后进行的尽管实际上它们原本是同时并行发生的
-两种合并结果一样 ，只是历史记录不一样
-
-git diff --check，会把可能的多余白字符修正列出来
-
-取消储藏 在某些情况下，你可能想应用储藏的修改，在进行了一些其他的修改后，又要取消之前所应用储藏的修改
-git stash show -p stash@{0} | git apply -R
-如果你沒有指定具体的某个储藏，Git 会选择最近的储藏
-git stash show -p | git apply -R
-新建一个別名，在你的 Git 里增加一个 stash-unapply 命令，这样更有效率
-git config --global alias.stash-unapply '!git stash show -p | git apply -R'
-
-git filter-branch
-如果你想用脚本的方式修改大量的提交，还有一个重写历史的选项可以用
-要从整个历史中删除一个名叫password.txt的文件
-git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
 
 git blame
 文件标注
