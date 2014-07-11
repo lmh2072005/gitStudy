@@ -69,7 +69,8 @@
 查看具体修改了什么内容 ，工作区和版本控制区的比较
 git diff HEAD --filename”命令可以查看工作区和版本库里面最新版本的区别
 git diff --check，会把可能的多余白字符修正列出来
-
+git diff HEAD   显示工作区和HEAD的区别。
+git diff A B  显示A和B的区别，A和B可以是标签、分支、commit等。
 
 五：git log
 git log  查看提交的历史记录
@@ -91,6 +92,9 @@ git reset --hard fe8e15651  回退到具体提交的记录
 用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区.
 再用git checkout --file 撤销工作区的修改
 如果已经提交到了版本库就只能回退历史版本了git reset --hard HEAD^
+
+git reset --soft    
+--soft：index和working directory中的内容不作任何改变，仅仅把HEAD指向<commit>
 
 七：工作区（Working Directory）版本库（Repository）
 工作区就是你在电脑里能看到的目录
@@ -213,9 +217,18 @@ eg : git config --global commit.template $HOME/.gitmessage.txt
 
 git config core.autocrlf  配置处理在windows操作系统和其它操作系统结束符问题
 
+更多学习资料：
+https://www.atlassian.com/git/workflows#!workflow-overview
+http://ihower.tw/blog/archives/5140
+http://www.worldhello.net/gotgithub/04-work-with-others/010-fork-and-pull.html
+http://rogerdudler.github.io/git-guide/index.zh.html
+http://www.ibm.com/developerworks/cn/opensource/os-cn-tourofgit/
+http://scottchacon.com/2011/08/31/github-flow.html
+http://nvie.com/posts/a-successful-git-branching-model/
+http://blog.csdn.net/hudashi/article/details/7664464
 =============== 
 
-如何在分支上移动HEAD  ？
+如何在分支上移动HEAD  ？  git reset --soft
 
 
 
